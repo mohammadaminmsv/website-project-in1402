@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  form {
+    @apply container flex-col bg-primaryBlue-300 justify-center text-center  my-32 items-center
+     max-w-[500pt] rounded-3xl h-[330pt] py-5 content-center ;
+  }
+  input[type="text"] {
+    @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    focus:w-3/5  transition delay-500 duration-1000 bg-white placeholder:text-zinc-400 
+    rounded-lg w-[250pt] text-center py-2;
+  }
+  input[type="number"] {
+    @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    bg-white placeholder:text-zinc-400 
+    rounded-lg w-[100pt] mx-2 text-center py-2;
+  }
+  input[type="password"] {
+    @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    bg-white placeholder:text-zinc-400 
+    focus:w-3/5  transition delay-500 duration-1000
+    rounded-lg w-[250pt] mx-2 text-center py-2;
+  }
+  input[type="tel"] {
+    @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    focus:w-3/5  transition delay-500 duration-1000 bg-white placeholder:text-zinc-400 
+    rounded-lg w-[250pt] text-center py-2;
+  }
+
+  input[type="email"] {
+    @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    bg-white placeholder:text-zinc-400 
+    focus:w-4/5  transition delay-500 duration-1000
+    rounded-lg w-[250pt] mx-2 text-center py-2;
+  }
+  select{
+    @apply  border-borderinputcolor-100  border-solid border-2 text-black outline-none 
+    bg-white placeholder:text-zinc-400 h-[39pt]
+    rounded-lg w-[100pt] text-center py-2;
+  }
+
+  button[type="submit"] {
+    @apply border-borderinputcolor-100 border-solid border-2
+     rounded-lg text-white bg-buttoncolor-100 px-10 py-2 text-2xl;
+  }
+}
