@@ -28,7 +28,8 @@ export default {
         borderinputcolor : {100 : '#555'} ,
         bgappcss : {100 : "#F3FFFF"} ,
         headercolor : {100 : "#71C9CE"},
-        buttoncolor : {100 : "#f0f"}
+        buttoncolor : {100 : "#f0f" ,200 : "#555"}
+       
       },
       spacing: {
         1: "8px",
