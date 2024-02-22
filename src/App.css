@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+   
     #root{
-        @apply h-screen bg-bgappcss-100
+        @apply h-screen bg-bgappcss-100 
     }
 }
+
+  

@@ -3,7 +3,7 @@ import styles from "./Style.Header.module.css"
 const Header = () => {
   return (
    <>
-   <div className='container flex  items-center bg-headercolor-100 h-[30pt]'>
+   <div className='container flex font-primary items-center bg-headercolor-100 h-[30pt]'>
     <div className='flex w-4/5 ml-10 space-x-5'>
     <span className='cursor-pointer text-xl font-semibold'>وارد شوید</span>
     <span className='cursor-pointer text-xl font-semibold'>ثبت نام کنید</span>

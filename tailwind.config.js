@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,TTF}"],
   theme: {
     screens: {
+     
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 
@@ -22,13 +23,16 @@ export default {
     container: {
       center: true,
     },
-    extend: {
+    extend: {   fontFamily:{
+      'primary': ['Advent+Pro'] ,
+      'secondary': ['Exo 2']
+    } ,
       colors: {
-        primaryBlue: { 100: "#45636b", 200: "#456645" , 300 : "#A6E3E9" },
+        primaryBlue: { 100: "#45636b", 200: "#456645" , 300 : "#C9D6DF" },
         borderinputcolor : {100 : '#555'} ,
-        bgappcss : {100 : "#F3FFFF"} ,
-        headercolor : {100 : "#71C9CE"},
-        buttoncolor : {100 : "#f0f" ,200 : "#555"}
+        bgappcss : {100 : "#F0F5F9"} ,
+        headercolor : {100 : "#52616B"},
+        buttoncolor : {100 : "#52616B" ,200 : "#555"}
        
       },
       spacing: {

@@ -61,7 +61,7 @@ const Login = () => {
         [e.target.name]: e.target.value,
       }));
     } else if (e.target.name == "year") {
-      if (e.target.value > 2015) {
+      if (e.target.value > 1396) {
         e.target.style.borderColor = "red";
         e.target.placeholder = "privicy warning";
       } else {
@@ -114,8 +114,7 @@ const Login = () => {
     } else if (e.target.name == "phone") {
       if (/[a-zA-Z]/g.test(e.target.value)) {
         e.target.value = "";
-      }
-       else {
+      } else {
         setForm((form) => ({
           ...form,
           [e.target.name]: e.target.value,
@@ -225,8 +224,8 @@ const Login = () => {
         }, 500);
       }
     } else if (e.target.name == "fifth") {
-      e.preventDefault()
-       if (form.check2 == true) {
+      e.preventDefault();
+      if (form.check2 == true) {
         informatin.push(form.name);
         informatin.push(form.lastname);
         informatin.push(form.day);
@@ -292,9 +291,9 @@ const Login = () => {
       }));
     } else if (e.target.name == "back4") {
       setForm((form) => ({
-        ...form , 
-        check : !form.check
-      }))
+        ...form,
+        check: !form.check,
+      }));
       setForm((form) => ({
         ...form,
         fifth: !form.fifth,
@@ -309,39 +308,45 @@ const Login = () => {
   return (
     <>
       {form.first && (
-        <form>
-          <label className="text-3xl font-semibold text-black" htmlFor="name">نام خود را وارید کنید</label>
-          <div className="flex flex-col space-y-12 mb-20 mt-15 items-center">
-          <input
-            type="text"
-            value={form.name}
-            placeholder="    نام "
-            id="name"
-            name="name"
-            onChange={changeHandler}
-          />
-          <input
-            type="text"
-            value={form.lastname}
-            placeholder="    نام خانوادگی"
-            id="last-name"
-            name="lastname"
-            onChange={changeHandler}
-          />
+        <form className="font-primary">
+          <div className="mt-[17pt]">
+          <label className="text-3xl font-semibold text-black " htmlFor="name">
+            نام خود را وارد کنید
+          </label>
           </div>
-          <button
-            type="submit"
-            name="first"
-            onClick={changeHandler}
-          >
+          <div className="flex flex-col space-y-5 mb-15 mt-20 items-center">
+            <input
+              type="text"
+              value={form.name}
+              placeholder="    نام "
+              id="name"
+              name="name"
+              onChange={changeHandler}
+            />
+            <input
+              type="text"
+              value={form.lastname}
+              placeholder="    نام خانوادگی"
+              id="last-name"
+              name="lastname"
+              onChange={changeHandler}
+            />
+          </div>
+          <button type="submit" name="first" onClick={changeHandler}>
             ادامه
           </button>
         </form>
       )}
       {form.second && (
-        <form >
-          <label htmlFor="birthday" className="text-3xl font-semibold text-black ">: تاریخ تولد خود و جنسیت را مشخص کنید </label>
-          <div className="flex flex-row justify-center mt-10 mb-5  items-center">
+        <form className="font-primary">
+          <div className="mt-[17px]">
+          <label
+            htmlFor="birthday"
+            className="text-3xl font-semibold text-black "
+          >
+            : تاریخ تولد خود و جنسیت را مشخص کنید{" "}
+          </label></div>
+          <div className="flex flex-row justify-center mt-20  items-center">
             <div>
               <select
                 onChange={changeHandler}
@@ -349,6 +354,7 @@ const Login = () => {
                 name="month"
                 className="mr-1"
               >
+                <button>--ماه--</button>
                 <option value="none">--ماه--</option>
                 <option value="Janaury">فروردین</option>
                 <option value="February">اردیبهشت</option>
@@ -361,7 +367,6 @@ const Login = () => {
                 <option value="August">آذر</option>
                 <option value="September">دی</option>
                 <option value="October">بهمن</option>
-                
                 <option value="December">اسنفد</option>
               </select>
             </div>
@@ -373,7 +378,6 @@ const Login = () => {
                 placeholder="روز"
                 name="day"
                 value={form.day}
-                
               />
             </div>
             <div>
@@ -384,14 +388,11 @@ const Login = () => {
                 placeholder="سال"
                 name="year"
                 value={form.year}
-                
               />
             </div>
           </div>
-          <div className="flex justify-center items-center flex-row mb-20">
-            <label htmlFor="check">
-              آقا
-            </label>
+          <div className="flex justify-center items-center flex-row mb-15 mt-5">
+            <label htmlFor="check">آقا</label>
             <input
               type="radio"
               name="sexual"
@@ -401,16 +402,14 @@ const Login = () => {
               className="mr-3 ml-1 w-3 h-3"
             />
 
-            <label  htmlFor="check">
-              خانم
-            </label>
+            <label htmlFor="check">خانم</label>
             <input
               type="radio"
               name="sexual"
               onChange={changeHandler}
               value="women"
               checked={form.sexual == "women"}
-             className="mr-3 ml-1 w-3 h-3"
+              className="mr-3 ml-1 w-3 h-3"
             />
           </div>
           <div className="flex flex-row-reverse justify-center">
@@ -422,11 +421,7 @@ const Login = () => {
             >
               ادامه
             </button>
-            <button
-              type="submit"
-              name="back1"
-              onClick={changeHandler}
-            >
+            <button type="submit" name="back1" onClick={changeHandler}>
               بازگشت
             </button>
           </div>
@@ -434,124 +429,144 @@ const Login = () => {
       )}
       {form.third && (
         <form>
-         
-          <label className="text-3xl font-semibold text-black " htmlFor="address"> : ایمیل خود را وارد کنید</label>
-           <div className="flex flex-row justify-center mt-20 mb-[100pt] items-center">
+          <div className="mt-[40px]">
+          <label
+            className="text-3xl font-semibold text-black "
+            htmlFor="address"
+          >
+            {" "}
+            : ایمیل خود را وارد کنید
+          </label></div>
+          <div className="flex flex-row justify-center mt-10 mb-[70pt] items-center">
             <input
-            type="text"
-            placeholder="exm@gmail.com"
-            name="email"
-            value={form.email}
-            onChange={changeHandler}
-          />
-            </div>
-          <div  className="flex flex-row-reverse justify-center" >
-          <button
-            onClick={changeHandler}
-            className="mr-3 ml-3"
-            type="submit"
-            name="third"
-          >
-            ادامه
-          </button>
-          <button
-            type="submit"
-            name="back2"
-            onClick={changeHandler}
-          >
-           بازگشت
-          </button>
+              type="text"
+              placeholder="exm@gmail.com"
+              name="email"
+              value={form.email}
+              onChange={changeHandler}
+            />
           </div>
-        
+          <div className="flex flex-row-reverse justify-center">
+            <button
+              onClick={changeHandler}
+              className="mr-3 ml-3"
+              type="submit"
+              name="third"
+            >
+              ادامه
+            </button>
+            <button type="submit" name="back2" onClick={changeHandler}>
+              بازگشت
+            </button>
+          </div>
         </form>
       )}
       {form.forth && (
         <form>
-
-          <label className="text-3xl font-semibold text-black " htmlFor="password"> : رمز ورود بسازید</label>
+          <label
+            className="text-3xl font-semibold text-black "
+            htmlFor="password"
+          >
+            {" "}
+            : رمز ورود بسازید
+          </label>
           <div className="flex flex-col justify-center mt-10 mb-10  space-y-3 items-center">
-          <input
-            type="password"
-            placeholder="رمز"
-            id="password"
-            name="password"
-            defaultValue={form.password}
-            onBlur={changeHandler}
-          />
-          <div id="root2"></div>
-          <input
-            type="password"
-            placeholder="تکرار رمز"
-            id="repassword"
-            name="repassword"
-            onChange={changeHandler}
-          />
-
-          <div className="flex justify-center items-center">
-            <label>!!رمز را نشان بده</label>
             <input
-              type="checkbox"
-              name="check"
-              onChange={changeHandler}
-              checked={form.check}
-              className="w-3 h-3 ml-1"
+              type="password"
+              placeholder="رمز"
+              id="password"
+              name="password"
+              defaultValue={form.password}
+              onBlur={changeHandler}
             />
+            <div id="root2"></div>
+            <input
+              type="password"
+              placeholder="تکرار رمز"
+              id="repassword"
+              name="repassword"
+              onChange={changeHandler}
+            />
+
+            <div className="flex justify-center items-center">
+              <label>!!رمز را نشان بده</label>
+              <input
+                type="checkbox"
+                name="check"
+                onChange={changeHandler}
+                checked={form.check}
+                className="w-3 h-3 ml-1"
+              />
             </div>
           </div>
           <div className="flex flex-row-reverse justify-center">
-          <button onClick={changeHandler} type="submit" className="mr-3 ml-3" name="forth">
-            ادامه
-          </button>
-          <button
-           type="submit"
-            name="back3"
-            
-            className="mr-3 ml-3"
-            onClick={changeHandler}
-          >
-            بازگشت
-          </button>
+            <button
+              onClick={changeHandler}
+              type="submit"
+              className="mr-3 ml-3"
+              name="forth"
+            >
+              ادامه
+            </button>
+            <button
+              type="submit"
+              name="back3"
+              className="mr-3 ml-3"
+              onClick={changeHandler}
+            >
+              بازگشت
+            </button>
           </div>
         </form>
       )}
       {form.fifth && (
         <form>
-          <label className="text-3xl font-semibold text-black " htmlFor="name"> : شماره تلفن خود را وارد کنید</label>
-          <div className="flex flex-col justify-center mb-10 mt-15 space-y-3 items-center">
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            name="phone"
-            onChange={changeHandler}
-            value={form.phone}
-            id="numberphone"
-          />
-          <label>
-          <div className="flex justify-center items-center ">
-            <a href="#" className="mr-1">قوانین وبسایت</a>
+          <div className="mt-[40px]">
+          <label className="text-3xl font-semibold text-black " htmlFor="name">
+            {" "}
+            : شماره تلفن خود را وارد کنید
+          </label></div>
+          <div className="flex flex-col justify-center mb-15 mt-15 space-y-3 items-center">
             <input
-              type="checkbox"
-              name="check2"
+              type="tel"
+              placeholder="Phone Number"
+              name="phone"
               onChange={changeHandler}
-              checked={form.check2}
-              className="w-3 h-3"
+              value={form.phone}
+              id="numberphone"
             />
-            </div>
-          </label>
+            <label>
+              <div className="flex justify-center items-center mb-5 mt-5 ">
+                <a href="#" className="mr-1">
+                  قوانین وبسایت
+                </a>
+                <input
+                  type="checkbox"
+                  name="check2"
+                  onChange={changeHandler}
+                  checked={form.check2}
+                  className="w-3 h-3"
+                />
+              </div>
+            </label>
           </div>
           <div className="flex flex-row-reverse justify-center">
-          <button onClick={changeHandler} type="submit" className="mr-3 ml-3" name="fifth">
-            ادامه
-          </button>
-          <button
-           type="submit"
-            name="back4"
-            
-            className="mr-3 ml-3"
-            onClick={changeHandler}
-          >
-            بازگشت
-          </button>
+            <button
+              onClick={changeHandler}
+              type="submit"
+              className="mr-3 ml-3"
+              name="fifth"
+            >
+              ادامه
+            </button>
+            <button
+              type="submit"
+              name="back4"
+              className="mr-3 ml-3"
+              onClick={changeHandler}
+            >
+              بازگشت
+            </button>
           </div>
         </form>
       )}
