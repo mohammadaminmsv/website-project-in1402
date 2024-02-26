@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Style.Login.module.css";
+import styles from '../Style.Login.module.css'
 import styled from "styled-components";
 
-const Login = () => {
+const Signin = () => {
   const [form, setForm] = useState({
     name: "",
     lastname: "",
@@ -575,32 +575,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signin;
 
-// const App = () => {
-//   const [state, setState] = useState(0);
-
-//   const call_plus = (state) => {
-//     console.log(state)
-//   }
-//   const plus = () => {
-//     setTimeout(() => {
-//     setState((perv) => perv + 1)
-//     setState((perv) => perv + 1)
-//     setState((perv) => perv + 1)
-//       call_plus(state)
-//     },1000)
-
-//   };
-
-//   return (
-//     <>
-//       <button type="button" onClick={plus}>
-//         plus
-//       </button>
-//       <h1>{state}</h1>
-//     </>
-//   );
-// };
-
-// export default App;

@@ -11,7 +11,7 @@
  
   form {
     @apply container flex-col bg-primaryBlue-300 justify-center text-center  my-32 items-center
-     max-w-[500pt] rounded-3xl h-[330pt] py-5 content-center font-primary ;
+     max-w-[500pt] rounded-3xl h-[330pt] py-5 content-center font-primary  ;
   }
   input[type="text"] {
     @apply border-borderinputcolor-100  border-solid border-2 text-black outline-none 
