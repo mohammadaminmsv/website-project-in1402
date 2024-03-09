@@ -1,20 +1,22 @@
 import { BrowserRouter as Router, Routes, Route ,Link } from 'react-router-dom';
 import React from 'react'
-import Signin from './Component/Signin'
-import Header from './Header'
-import Home from './Component/Home';
+import Signin from './Pages/Signin'
+import Header from './Feature/Header'
+import Home from './Pages/Home';
 import "./App.css"
-import Profile from './Component/Profile';
-import Product from './Component/Product';
-import Catalogue from './Component/catalogue';
-import Login from './Component/Login';
+import Profile from './Pages/Profile';
+import Product from './Pages/Product';
+import Catalogue from './Pages/catalogue';
+import Login from './Pages/Login';
+import Footer from './Feature/Footer';
+import BottomHeader from './Feature/BottomHeader';
 
 
 const App = () => {
   return (
     <>
-    <Header />
-    
+    <Header />  
+    <BottomHeader />
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/Signin' element={<Signin/>} />
@@ -23,8 +25,8 @@ const App = () => {
         <Route path='/Product' element={<Product/>} />
         <Route path='/Catalogue' element={<Catalogue/>} />
       </Routes>
-    
-
+      
+        <Footer />
     </>
   )
 }

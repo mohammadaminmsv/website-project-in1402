@@ -1,8 +1,9 @@
 const ProductInfo = [
     {
+        id: 100020 ,
         name : "تلویزیون" ,
         brand : "سامسونگ" ,
-        color : {black :"#555" , white : "سفید"} ,
+        color : {"gray" :"#555" , "black" : "#111" , "white" : "#fff"} ,
         size : "32",
         quality : "HD",
         images : {
