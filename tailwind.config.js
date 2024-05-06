@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,TTF}"],
   theme: {
@@ -34,6 +35,8 @@ export default {
         headercolor : {100 : "#52616B"},
         buttoncolor : {100 : "#52616B" ,200 : "#555"}
        
+      },boxShadow: {
+        '3xl': '-5px -5px 5px 5px rgba(0, 0, 0, 0.1)',
       },
       spacing: {
         1: "8px",
@@ -44,7 +47,8 @@ export default {
         6: "48px",
         15:"30px"
       },
+      
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-dir')(),],
 };

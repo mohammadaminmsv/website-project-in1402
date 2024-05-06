@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-   
-    
-    #root{
-        @apply min-h-screen  
-    }
+  #root {
+    @apply min-h-screen bg-slate-100;
+  }
 }
-
-  

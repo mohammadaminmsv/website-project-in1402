@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const Button = (props) => {
+const Button = ({ name, className, logo, className2, id, type , click }) => {
   return (
     <>
-    <button className='bg-sky-500 p-10'>{props.name}</button>
-    
-    
+      <div>
+        <button id={id} className={className} onClick={click}>
+          <span className={className2}>{logo}</span>
+          {name}
+        </button>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

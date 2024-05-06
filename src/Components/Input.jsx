@@ -1,13 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const Input = ({place , name , id ,type ,classn,children }) => {
+const Input = ({ place, name, id, type, classn, children, changehandler }) => {
   return (
     <>
-   <input className={classn} placeholder={place} type={type} id={id} name={name} >
+      <input
+        className={classn}
+        onChange={changehandler}
+        placeholder={place}
+        type={type}
+        id={id}
+        name={name}
+      >
         {children}
-   </input>
-   </>
-  )
-}
+      </input>
+    </>
+  );
+};
 
-export default Input
+export default Input;
