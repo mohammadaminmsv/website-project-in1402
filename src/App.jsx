@@ -18,12 +18,22 @@ import Information from "./Profile-pages/Information";
 import BuyInfo from "./Profile-pages/BuyInfo";
 import FetchInfo from "./Information/FetchInfo";
 import Cart from "./Pages/Cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Notfication from "./Components/Notfication";
-import GetInfo from "./Information/GetInfo";
+import { NotiActions } from "./Information/Notiaction";
 
 const App = () => {
   const notification1 = useSelector((state) => state.noti.notiaction);
+  const dispatch = useDispatch();
+  setTimeout(() => {
+    dispatch(
+      NotiActions.showNotification({
+        open: false,
+        message: "",
+        type: "",
+      })
+    );
+  }, 20000);
 
   return (
     <>
@@ -35,7 +45,7 @@ const App = () => {
           message={notification1.message}
         />
       )}
-      <GetInfo />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Signin" element={<Signin />} />

@@ -9,7 +9,7 @@ export const sendUserDataToDb = (form) => {
       const response = await fetch(
         `https://amin-test-web-exp-default-rtdb.firebaseio.com/UserInfo.json`,
         {
-          method: "PUT",
+          method: "POST",
           body: JSON.stringify(form),
         }
       );

@@ -3,23 +3,19 @@ import Information from "../Profile-pages/Information";
 import BuyInfo from "../Profile-pages/BuyInfo";
 import Button from "../Components/Button";
 import { userInfo } from "../Data/UserInfo";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  
   const [show, setShow] = useState({
     base: true,
     buy: false,
     information: false,
   });
 
-  useEffect(() => {
-    document
-      .querySelector("#buyinfo")
-      .addEventListener("click", changecomponentbuy);
-    document
-      .querySelector("#information")
-      .addEventListener("click", changecomponentinfo);
-  }, []);
-
+  const userInfoData = useSelector((state) => state.logi);
+  console.log(userInfoData)
+ 
   const changecomponentbuy = () => {
     setShow((show) => ({
       ...show,
@@ -27,6 +23,7 @@ const Profile = () => {
       buy: true,
       information: false,
     }));
+    GetUserDataFromDB()
   };
   const changecomponentinfo = () => {
     setShow((show) => ({
@@ -37,22 +34,21 @@ const Profile = () => {
     }));
   };
 
-  const myInfo = userInfo.find((item) => item.id === 100);
   return (
     <div className="container text-right mt-8 ">
       <div>
-        <span className=" font-thin">{myInfo.name} سلام</span>{" "}
+        <span className=" font-thin"> سلام</span>{" "}
       </div>
       <div className="container flex flex-row-reverse text-right mt-4 shadow-lg h-[600pt]">
         <div className="w-1/4 bg-green-400 rounded-e-lg p-2 space-y-2">
-          <Button className={``} name={"سابقه خرید"} id={"buyinfo"} />
-          <Button className={``} name={"اطلاعات کاربر"} id={"information"} />
+          <Button className={``} click={changecomponentbuy} name={"سابقه خرید"} id={"buyinfo"} />
+          <Button className={``} click={changecomponentinfo} name={"اطلاعات کاربر"} id={"information"} />
         </div>
         <div className="w-3/4 bg-slate-50 rounded-s-lg p-2">
           {show.base && (
             <div className="flex flex-col">
               <span>
-                {myInfo.name} {myInfo.lastname}
+                
               </span>
               "خوش آمدید! با سلام و احترام به شما. از وقتی که برای ما وقت
               گذاشته‌اید، سپاسگزاریم. امیدواریم اینجا برای شما تجربه‌ای دلپذیر و

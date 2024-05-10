@@ -27,9 +27,9 @@ const Header = () => {
             className="w-[250px] h-10 cursor-pointer rounded-[50pt]"
           />
         </Link>
-        <div className="flex flex-row justify-start space-x-3 w-[250px]">
+        <div className="flex flex-row justify-center items-center space-x-3 w-[250px]">
           <Link
-            className="cursor-pointer hover:bg-teal-300 px-3 rounded-md"
+            className="cursor-pointer hover:bg-teal-300 px-3  rounded-md"
             to="/Signin"
           >
             <span>ثبت نام</span>

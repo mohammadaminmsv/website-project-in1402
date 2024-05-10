@@ -12,42 +12,28 @@ const UserInfo = createSlice({
   },
   reducers: {
     addUser(state, action) {
-      const newItem = action.payload;
-      const exisitingUser = state.userInfo.find(
-        (item) => item.code === newItem.code
+      const newUser = action.payload;
+      const existingUser = state.userInfo.find(
+        (user) => user.email === newUser.email
       );
-      console.log(newItem);
-      if (false) {
-        console.log(exisitingUser);
+      if (!existingUser) {
+        state.userInfo.push({ ...newUser, id: state.totaluser + 1 });
+        state.totaluser += 1;
       } else {
-        state.totaluser++;
-        state.userInfo.push({
-          name: newItem.name,
-          lastname: newItem.lastname,
-          email: newItem.email,
-          phonenumber: newItem.phonenumber,
-          password: newItem.password,
-          repassword: newItem.repassword,
-          address: newItem.address,
-          homephone: newItem.homenumber,
-          NationalCode: newItem.code,
-        });
+        console.log("User already exists");
       }
     },
+
     changeInfoOfUser(state, action) {
-      const newItem = action.payload;
-      state.totalchange++;
-      state.userInfo.push({
-        name: newItem.name,
-        lastname: newItem.lastname,
-        email: newItem.email,
-        phonenumber: newItem.phonenumber,
-        password: newItem.password,
-        repassword: newItem.repassword,
-        address: newItem.address,
-        homephone: newItem.homenumber,
-        NationalCode: newItem.code,
-      });
+      const updatedUser = action.payload;
+      const index = state.userInfo.findIndex(
+        (user) => user.email === updatedUser.email
+      );
+      if (index !== -1) {
+        state.userInfo[index] = { ...state.userInfo[index], ...updatedUser };
+      } else {
+        console.log("User not found");
+      }
     },
     deleteUser(state, action) {},
   },

@@ -33,13 +33,13 @@ const Signin = () => {
 
   const [continu, setContinu] = useState(false);
   const [notif, setNotif] = useState([]);
+  const userinfo = useSelector((state)=>state.user)
 
   const notification1 = useSelector((state) => state.noti.notiaction);
   useEffect(() => {
     setNotif(notification1);
   }, [notification1]);
 
-  console.log(notif);
   const handleClick = (e) => {
     e.preventDefault();
     const isFormFilled =
@@ -51,6 +51,7 @@ const Signin = () => {
       form.repassword;
 
     if (isFormFilled) {
+      console.log(userinfo)
       dispatch(UserActions.addUser(form));
       setContinu(true);
     } else {

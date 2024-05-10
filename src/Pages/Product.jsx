@@ -14,11 +14,9 @@ const Product = () => {
     <>
       <div
         onMouseMove={showhandler}
-        onMouseLeave={() =>
-          setTimeout(() => {
+        onMouseLeave={() =>{
             setHidden("hidden");
-          }, 2000)
-        }
+        }}
         className="dropdown relative"
       >
         <button className="flex flex-row">
@@ -27,7 +25,7 @@ const Product = () => {
         </button>
         <div
           id="dropdown"
-          className={`${hidden} z-10 flex flex-col text-center w-96 fixed right-72 divide-y pb-2 mt-[3pt] px-2`}
+          className={`${hidden} z-10 flex flex-col text-center w-96 fixed right-80 divide-y pb-2 mt-[3pt] px-2`}
         >
           <div className="flex flex-col  divide-y ">
             <Link className="cursor-pointer" to="/product/watch">
