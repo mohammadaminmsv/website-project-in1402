@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import Notiaction, { NotiActions } from "../Information/Notiaction";
 import Notfication from "../Components/Notfication";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Signin = () => {
     homenumber: "",
     code: "",
   });
-
+  const [infoToDb, setInfoToDb] = useState([]);
   const changehandler = (e) => {
     setForm((form) => ({
       ...form,
@@ -32,13 +33,6 @@ const Signin = () => {
   };
 
   const [continu, setContinu] = useState(false);
-  const [notif, setNotif] = useState([]);
-  const userinfo = useSelector((state)=>state.user)
-
-  const notification1 = useSelector((state) => state.noti.notiaction);
-  useEffect(() => {
-    setNotif(notification1);
-  }, [notification1]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -51,7 +45,7 @@ const Signin = () => {
       form.repassword;
 
     if (isFormFilled) {
-      console.log(userinfo)
+      console.log(form);
       dispatch(UserActions.addUser(form));
       setContinu(true);
     } else {
@@ -64,32 +58,33 @@ const Signin = () => {
       );
     }
   };
-
   const myItem = useSelector((state) => state.user);
-
-  const viraishhandler = () => {
-    setContinu(false);
-    dispatch(
-      UserActions.changeInfoOfUser({
-        name: "",
-        lastname: "",
-        email: "",
-        phonenumber: "",
-        password: "",
-        repassword: "",
-        homeaddress: "",
-        homenumber: "",
-        code: "",
-      })
-    );
-  };
+  useEffect(() => {
+    axios
+      .get(
+        "https://amin-test-web-exp-default-rtdb.firebaseio.com/UserInformation.json"
+      )
+      .then((res) => setInfoToDb(res.data.userInfo));
+  }, []);
   const navigator = useNavigate();
   const signhandler = () => {
     console.log(myItem);
-    dispatch(sendUserDataToDb(myItem));
-    setTimeout(() => {
-      navigator(`/Profile`);
-    }, 3000);
+    console.log(form);
+    if (infoToDb.find((user) => user.email === form.email)) {
+      dispatch(
+        NotiActions.showNotification({
+          open: true,
+          message: "ایمیل تکراری است",
+          type: "error",
+        })
+      );
+    } else {
+      dispatch(sendUserDataToDb(myItem));
+      setContinu(false);
+      setTimeout(() => {
+        navigator(`/Profile`);
+      }, 3000);
+    }
   };
 
   return (
@@ -219,12 +214,6 @@ const Signin = () => {
                 onClick={signhandler}
               >
                 ثبت نام
-              </button>
-              <button
-                className=" bg-blue-300 px-5 rounded-md "
-                onClick={viraishhandler}
-              >
-                ویرایش
               </button>
             </div>
           ) : (

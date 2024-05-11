@@ -21,6 +21,7 @@ import Cart from "./Pages/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import Notfication from "./Components/Notfication";
 import { NotiActions } from "./Information/Notiaction";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 const App = () => {
   const notification1 = useSelector((state) => state.noti.notiaction);
@@ -34,7 +35,8 @@ const App = () => {
       })
     );
   }, 20000);
-
+  const userInfoData = useSelector((state) => state.logi);
+  
   return (
     <>
       <Header />
@@ -50,7 +52,14 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route
+          path="/Profile"
+          element={
+            <ProtectedRoute userInfoData={userInfoData}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/Product" element={<Product />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Catalogue" element={<Catalogue />} />

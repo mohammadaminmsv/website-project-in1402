@@ -13,15 +13,8 @@ const UserInfo = createSlice({
   reducers: {
     addUser(state, action) {
       const newUser = action.payload;
-      const existingUser = state.userInfo.find(
-        (user) => user.email === newUser.email
-      );
-      if (!existingUser) {
-        state.userInfo.push({ ...newUser, id: state.totaluser + 1 });
-        state.totaluser += 1;
-      } else {
-        console.log("User already exists");
-      }
+      state.userInfo.push({ ...newUser, id: state.totaluser + 1 });
+      state.totaluser += 1;
     },
 
     changeInfoOfUser(state, action) {

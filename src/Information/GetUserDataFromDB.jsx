@@ -12,6 +12,10 @@ const UsersInfoAgree = createSlice({
       state.userInfoAgreeSeqment = action.payload;
       state.totalEnter += 1;
     },
+    deleteFromSaveUser(state,action){
+      state.userInfoAgreeSeqment = []
+      state.totalEnter = 0
+    }
   },
 });
 

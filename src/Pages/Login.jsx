@@ -20,14 +20,12 @@ const Login = () => {
   useEffect(() => {
     axios
       .get(
-        "https://amin-test-web-exp-default-rtdb.firebaseio.com/UserInfo.json"
+        "https://amin-test-web-exp-default-rtdb.firebaseio.com/UserInformation.json"
       )
       .then((res) => {
-        const usersArray = res.data ? Object.values(res.data) : [];
-        setData(usersArray);
+        setData(res.data.userInfo);
       });
-  }, []);
-
+  }, [data]);
   const changehandler = (e) => {
     setInfo((info) => ({
       ...info,
@@ -35,34 +33,21 @@ const Login = () => {
     }));
   };
 
-  useEffect(() => {
-    data.find((item) => {
-      const user = Object.values(item)[2];
-      setEmailchk(user.map((item) => item.email));
-      setPasschk(user.map((item) => item.password));
-    });
-  }, [data]);
-
   const clickhandler = () => {
     if (data.length > 0) {
-      let s1 = emialchk.find((item) => item === info.loginemail);
-      let s2 = passchk.find((item) => item === info.loginpassword);
+      const user = data.find(
+        (item) =>
+          item.email === info.loginemail && item.password === info.loginpassword
+      );
+      dispatch(infoActions.deleteFromSaveUser())
 
-      console.log(s1, s2);
+      console.log(user);
       console.log(data);
-      if (s1 && s2) {
-        const loggedInUser = data.find((item) => {
-          const userDetails = Object.values(item)[2];
-          return (
-            userDetails.email === info.loginemail &&
-            userDetails.password === info.loginpassword
-          );
-        });
-        console.log(loggedInUser)
+      if (user) {
         setShow(false);
         dispatch(
           infoActions.showInformationOfUser({
-            userInfoAgreeSeqment: loggedInUser,
+            userInfoAgreeSeqment: user,
           })
         );
         dispatch(
