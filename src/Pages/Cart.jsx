@@ -9,9 +9,9 @@ const Cart = () => {
         </div>
         <div className="flex flex-row-reverse my-5">
           <div className="w-4/5 border border-1 shadow-2xl h-[200pt] bg-slate-50 ml-28 rounded-lg">
-            khl lpw,g
+            اطلاعات خرید شما به صورت زیر است
           </div>
-          <div className="w-1/5 bg-red-400">shtva alh</div>
+          <div className="w-1/5 bg-red-400">مبلغ فاکتور شده</div>
         </div>
       </div>
     </>
