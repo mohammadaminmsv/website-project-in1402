@@ -1,5 +1,5 @@
 import React from "react";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { sendUserDataToDb } from "./Senddata";
 import { useDispatch } from "react-redux";
 
@@ -19,14 +19,8 @@ const UserInfo = createSlice({
 
     changeInfoOfUser(state, action) {
       const updatedUser = action.payload;
-      const index = state.userInfo.findIndex(
-        (user) => user.email === updatedUser.email
-      );
-      if (index !== -1) {
-        state.userInfo[index] = { ...state.userInfo[index], ...updatedUser };
-      } else {
-        console.log("User not found");
-      }
+      state.userInfo.push({ ...updatedUser, totalchange: state.totaluser + 1 });
+
     },
     deleteUser(state, action) {},
   },

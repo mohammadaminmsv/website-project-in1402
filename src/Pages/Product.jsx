@@ -28,13 +28,13 @@ const Product = () => {
           className={`${hidden} z-10 flex flex-col text-center w-96 fixed right-80 divide-y pb-2 mt-[3pt] px-2`}
         >
           <div className="flex flex-col  divide-y ">
-            <Link className="cursor-pointer" to="/product/watch">
+            <Link className="cursor-pointer" to="/product/mobile_tablet">
               <Button name={"موبایل"} className={"my-1 text-xl"} />
             </Link>
-            <Link className="cursor-pointer" to="/product/watch">
+            <Link className="cursor-pointer" to="/product/mobile_tablet">
               <Button name={"تبلت"} className={"my-1 text-xl"} />
             </Link>
-            <Link className="cursor-pointer" to="/product/watch">
+            <Link className="cursor-pointer" to="/product/laptop">
               <Button name={"لبتاب"} className={"my-1 text-xl"} />
             </Link>
             <Link className="cursor-pointer" to="/product/watch">

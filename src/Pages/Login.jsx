@@ -25,7 +25,7 @@ const Login = () => {
       .then((res) => {
         setData(res.data.userInfo);
       });
-  }, [data]);
+  }, []);
   const changehandler = (e) => {
     setInfo((info) => ({
       ...info,
@@ -35,14 +35,13 @@ const Login = () => {
 
   const clickhandler = () => {
     if (data.length > 0) {
-      const user = data.find(
+      const user = data[data.length - 1].find(
         (item) =>
           item.email === info.loginemail && item.password === info.loginpassword
       );
-      dispatch(infoActions.deleteFromSaveUser())
-
+      dispatch(infoActions.deleteFromSaveUser());
       console.log(user);
-      console.log(data);
+
       if (user) {
         setShow(false);
         dispatch(

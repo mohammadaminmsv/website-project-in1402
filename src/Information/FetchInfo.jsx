@@ -7,18 +7,19 @@ const FetchInfo = () => {
   useEffect(() => {
     async function fetchData() {
       const getData = await fetch(
-        "https://amin-test-web-exp-default-rtdb.firebaseio.com/ShopItems/Laptop.json"
+        "https://amin-test-web-exp-default-rtdb.firebaseio.com/ShopItems/MobilPhone.json"
       );
       const showData = await getData.json();
       setData(showData);
       setLoading(false);
+      console.log(data)
     }
     fetchData();
   }, [data]);
 
   return (
     <div>
-      sa
+      
       <table>
         {loading ? (
           <div>wait</div>

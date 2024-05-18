@@ -113,7 +113,6 @@ const Home = () => {
       </div>
       <Outlet />
       <SpecialComponent />
-      <FetchInfo />
     </div>
   );
 };

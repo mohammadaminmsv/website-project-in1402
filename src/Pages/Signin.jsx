@@ -64,20 +64,27 @@ const Signin = () => {
       .get(
         "https://amin-test-web-exp-default-rtdb.firebaseio.com/UserInformation.json"
       )
-      .then((res) => setInfoToDb(res.data.userInfo));
+      .then((res) => setInfoToDb(res.data));
   }, []);
   const navigator = useNavigate();
   const signhandler = () => {
     console.log(myItem);
     console.log(form);
-    if (infoToDb.find((user) => user.email === form.email)) {
-      dispatch(
-        NotiActions.showNotification({
-          open: true,
-          message: "ایمیل تکراری است",
-          type: "error",
-        })
-      );
+
+    console.log(infoToDb);
+
+    if (infoToDb.totaluser > 0) {
+      if (infoToDb.userInfo.find((user) => user.email === form.email)) {
+        dispatch(
+          NotiActions.showNotification({
+            open: true,
+            message: "ایمیل تکراری است",
+            type: "error",
+          })
+        );
+      } else {
+        return;
+      }
     } else {
       dispatch(sendUserDataToDb(myItem));
       setContinu(false);
