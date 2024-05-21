@@ -1,12 +1,18 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { cardActons } from "./Card";
+
 
 const FetchInfo = () => {
   const [counts, setCounts] = useState({});
   const [selectedIds, setSelectedIds] = useState([]);
+  const [selecteditems, setSelecteditems] = useState([]);
+  const [matchcountsanditem, setmatchcountsanditem] = useState([]);
+  const cardItems = useSelector((state) => state.card);
+  const dispatch = useDispatch();
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["items"],
@@ -16,16 +22,15 @@ const FetchInfo = () => {
       );
       return response.data.Laptop;
     },
+    staleTime: 4000,
   });
-
-  const login = useSelector((state) => state.logi);
-  const navigate = useNavigate();
 
   const handleIncrement = (id) => {
     setCounts((prevCounts) => ({
       ...prevCounts,
       [id]: (prevCounts[id] || 0) + 1,
     }));
+    dispatch(cardActons.incrementCount(id))
   };
 
   const handleDecrement = (id) => {
@@ -38,39 +43,57 @@ const FetchInfo = () => {
       }
       return { ...prevCounts, [id]: newCount };
     });
+    dispatch(cardActons.decrementCount(id))
+
   };
-  
+
   useEffect(() => {
-    const newSelectedIds = selectedIds.filter(id => counts[id] > 0);
+    const newSelectedIds = selectedIds.filter((id) => counts[id] > 0);
     setSelectedIds(newSelectedIds);
   }, [counts]);
 
-  const listHandler = useCallback(
-    (item) => {
-      setSelectedIds((prevIds) => [...prevIds, item.id]);
-      setCounts((prevCounts) => ({
-        ...prevCounts,
-        [item.id]: 1,
-      }));
-    },
-    [login, navigate]
-  );
+  useEffect(() => {
+    selecteditems.forEach((item) => {
+      if (counts[item.id]) {
+        setmatchcountsanditem((prev) => [
+          ...prev,
+          { counts: counts[item.id], item },
+        ]);
+      }
+    });
+  }, [counts, selecteditems]);
+  const listHandler = useCallback((item) => {
+    const existingCount = counts[item.id] || 0;
+    setSelectedIds((prev) => [...prev, item.id]);
+    setSelecteditems((prev) => [...prev, item]);
+    setCounts((prev) => ({
+      ...prev,
+      [item.id]: existingCount + 1,
+    }));
+  
+    if (existingCount === 0) {
+      dispatch(cardActons.addItemToCard({ item, counts: 1 }));
+    } else {
+      dispatch(cardActons.addItemToCard({ item, counts: existingCount + 1 }));
+    }
+  }, [dispatch, counts]);
 
+  console.log(cardItems);
   if (error) return <div>Error in showing data</div>;
   if (isLoading) return <div>اطلاعات در حال بارگزاری هستند</div>;
 
   return (
-    <div className="container">
+    <div className="container mt-7">
       {data.length > 0 ? (
-        <ul className="flex flex-row space-x-5">
+        <div className="flex flex-row space-x-5 space-y-5 justify-center flex-wrap items-start">
           {data.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-50 flex flex-col h-96 text-center content-center justify-center items-center space-y-4"
+              className="bg-slate-50 flex flex-col h-96 mt-0 ml-0 w-72 text-center content-center justify-center items-center space-y-4 hover:border-2 hover:shadow-lg hover:border-black"
             >
-              <img src={item.img} width={200} height={200} alt={item.name} />
+              <img src={item.img} alt={item.name} />
               <li className="font-bold">{item.name}</li>
-              <li>Price: {item.price}</li>
+              <li>Price: {item.price}$</li>
               {selectedIds.includes(item.id) ? (
                 <div className="flex flex-row space-x-3">
                   <button
@@ -80,11 +103,10 @@ const FetchInfo = () => {
                     +1
                   </button>
                   <input
-                    className=" w-15 rounded-lg border border-black text-center"
+                    className="w-15 rounded-lg border border-black text-center"
                     value={counts[item.id] || 0}
                     readOnly
                   />
-
                   <button
                     className="bg-green-400 rounded-lg p-1"
                     onClick={() => handleDecrement(item.id)}
@@ -102,7 +124,7 @@ const FetchInfo = () => {
               )}
             </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div>No items found</div>
       )}

@@ -4,7 +4,6 @@ import FetchInfo from "../Information/FetchInfo";
 const Mobile_Tablet = () => {
   return (
     <div>
-      Mobile_Tablet
       <FetchInfo />
     </div>
   );
