@@ -13,18 +13,19 @@ const UserInfo = createSlice({
   reducers: {
     addUser(state, action) {
       const newUser = action.payload;
-      state.userInfo.push({ ...newUser, id: state.totaluser + 1 });
+      state.userInfo.push({ ...newUser, id: state.totaluser + 1  , cardItem : []});
       state.totaluser += 1;
     },
 
     changeInfoOfUser(state, action) {
       const updatedUser = action.payload;
-      state.userInfo.push({ ...updatedUser, totalchange: state.totaluser + 1 });
+      state.userInfo.push({ ...updatedUser, totalchange: totalchange + 1 });
 
     },
-    deleteUser(state, action) {},
+   
   },
 });
+ 
 
 export const UserActions = UserInfo.actions;
 export default UserInfo;

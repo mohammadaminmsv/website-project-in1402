@@ -25,6 +25,7 @@ const Signin = () => {
     code: "",
   });
   const [infoToDb, setInfoToDb] = useState([]);
+
   const changehandler = (e) => {
     setForm((form) => ({
       ...form,
@@ -82,11 +83,21 @@ const Signin = () => {
             type: "error",
           })
         );
+        setContinu(false);
       } else {
+        dispatch(sendUserDataToDb(myItem));
         return;
       }
     } else {
+
       dispatch(sendUserDataToDb(myItem));
+      dispatch(
+        NotiActions.showNotification({
+          open: true,
+          message: "ثبت نام تکمیل شد",
+          type: "success",
+        })
+      );
       setContinu(false);
       setTimeout(() => {
         navigator(`/Profile`);

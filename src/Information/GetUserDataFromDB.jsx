@@ -15,7 +15,21 @@ const UsersInfoAgree = createSlice({
     deleteFromSaveUser(state,action){
       state.userInfoAgreeSeqment = []
       state.totalEnter = 0
+    }  , addProduct(state, action) {
+      const userItems = action.payload.userItems;
+    const userId = action.payload.userId;
+    const existingUser = state.userInfoAgreeSeqment.find(user => user.id === userId);
+    if (existingUser) {
+      existingUser.cartItems = userItems;
+    } else {
+      const newUser = {
+        id: state.totaluser + 1,
+        cartItems: userItems
+      };
+      state.userInfo.push(newUser);
+      state.totaluser += 1;
     }
+  },
   },
 });
 

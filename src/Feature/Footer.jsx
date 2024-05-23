@@ -9,10 +9,10 @@ const Footer = () => {
   return (
     <>
       <footer
-        className="container rounded-t-2xl shadow-2xl bottom-0 relative h-[200pt] flex flex-row-reverse justify-between mt-10 w-full px-20  py-3 bg-teal-50 text-right"
+        className="container rounded-t-2xl shadow-2xl bottom-0 relative h-[200pt] flex flex-row-reverse justify-between mt-10 w-full px-20  py-3 bg-teal-50 text-right md:px-3"
         id="footer"
       >
-        <div className="container flex flex-col space-y-3">
+        <div className="container flex flex-col space-y-3 md:space-y-1">
           <span className="font-bold">امور مشتریان</span>
           <span className="font-thin">داشبورد مشتریان</span>
           <span className="font-thin">شرایط فروش به همکار</span>
@@ -36,10 +36,10 @@ const Footer = () => {
           </span>
           <span className="font-thin">تماس با ما</span>
         </div>
-        <div className="container flex flex-col space-y-3 pr-5">
+        <div className="container flex flex-col space-y-3 pr-5 md:pr-1">
           <span className="font-bold ">موسوی در شبکه های اجتماعی</span>
           <div className="flex flex-row space-x-4">
-            <span className="font-thin ml-24 cursor-pointer">
+            <span className="font-thin ml-24 md:ml-0 cursor-pointer">
               <FaInstagram className="w-12 h-12" />
             </span>
             <span className="font-thin cursor-pointer">

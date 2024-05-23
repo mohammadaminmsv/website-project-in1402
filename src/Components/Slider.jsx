@@ -7,8 +7,8 @@ import "swiper/css/navigation";
 
 const Slider = () => {
   return (
-    <div className="container justify-center flex flex-row space-x-4">
-      <div className="w-[600pt] ">
+    <div className="container justify-center flex flex-row space-x-4 ">
+      <div className="w-[600pt] md:w-[500px] lg:hidden">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}

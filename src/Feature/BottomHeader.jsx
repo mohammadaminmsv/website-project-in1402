@@ -18,7 +18,7 @@ const BottomHeader = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
       windowHeight > 64
-        ? setStickyClass("fixed top-0 z-10 left-28")
+        ? setStickyClass("fixed top-0 z-10 left-28 md:left-15")
         : setStickyClass("relative");
     }
   };
@@ -35,7 +35,7 @@ const BottomHeader = () => {
         </Link>
       </div>
 
-      <nav className="flex flex-row  md:flex-row-reverse space-x-10 mb-2 ltr sm:flex-col sm:mt-20 ">
+      <nav className="flex flex-row  space-x-10 mb-2 ltr  ">
         <Link
           className="cursor-pointer hover:bg-slate-300 rounded-md p-1 text-md ml-10 font-semibold"
           to="/"

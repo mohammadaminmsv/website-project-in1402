@@ -15,13 +15,13 @@ const SpecialComponent = () => {
   return (
     <div className="container text-center border-dashed border-t-2 pt-3 border-cyan-300 space-x-10">
       <h3 className=" text-red-400 font-bold text-2xl">محصولات ویژه</h3>
-      <div className=" mt-7 grid grid-cols-5 space-x-5 justify-items-center">
+      <div className=" mt-7 grid grid-cols-5 space-x-5  md:grid-cols-3 md:space-y-5">
         {specialProduct.map((item) => (
           <div
             key={item.id}
             onMouseEnter={(e) => show(e, item)}
             onMouseLeave={unshow}
-            className="rounded-xl hover:shadow-2xl hover:shadow-slate-800  ring-2"
+            className="rounded-xl hover:shadow-2xl  ring-2"
           >
             <div className={`invisible rounded-lg absolute bg-green-300 `}>
               <Popup

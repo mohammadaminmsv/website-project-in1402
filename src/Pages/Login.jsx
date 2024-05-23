@@ -35,7 +35,7 @@ const Login = () => {
 
   const clickhandler = () => {
     if (data.length > 0) {
-      const user = data[data.length - 1].find(
+      const user = data.find(
         (item) =>
           item.email === info.loginemail && item.password === info.loginpassword
       );

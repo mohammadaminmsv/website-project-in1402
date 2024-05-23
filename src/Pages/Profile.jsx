@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import Information from "../Profile-pages/Information";
 import BuyInfo from "../Profile-pages/BuyInfo";
 import Button from "../Components/Button";
-import { userInfo } from "../Data/UserInfo";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { infoActions } from "../Information/GetUserDataFromDB";
 
 const Profile = () => {
   const [user, setUser] = useState([]);
@@ -14,7 +13,7 @@ const Profile = () => {
     information: false,
   });
   const userInfoData = useSelector((state) => state.logi);
-
+const dispatch = useDispatch()
   useEffect(() => {
     setUser(userInfoData.userInfoAgreeSeqment.userInfoAgreeSeqment);
   });
@@ -35,11 +34,19 @@ const Profile = () => {
     }));
   };
 
+  const logouthandler =()=>{
+    dispatch(infoActions.deleteFromSaveUser())
+  }
   return (
     <div className="container text-right mt-8 h-screen">
       <div>
         <span className=" font-thin">{user.name} سلام</span>{" "}
       </div>
+      <Button
+        name={"خروج"}
+        className={"bg-red-500 w-14 text-center left-15 pb-2 fixed rounded-lg"}
+        click={logouthandler}
+      />
       <div className="container flex flex-row-reverse text-right mt-4 shadow-lg ">
         <div className="w-1/4  bg-green-400 rounded-e-lg p-2 space-y-2">
           <Button

@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { cardActons } from "./Card";
 
-
 const FetchInfo = () => {
   const [counts, setCounts] = useState({});
   const [selectedIds, setSelectedIds] = useState([]);
-  const [selecteditems, setSelecteditems] = useState([]);
-  const [matchcountsanditem, setmatchcountsanditem] = useState([]);
+  const [datato, setDatato] = useState([]);
   const cardItems = useSelector((state) => state.card);
   const dispatch = useDispatch();
 
@@ -24,13 +22,16 @@ const FetchInfo = () => {
     },
     staleTime: 4000,
   });
+  useEffect(() => {
+    setDatato(data);
+  }, [data]);
 
   const handleIncrement = (id) => {
     setCounts((prevCounts) => ({
       ...prevCounts,
       [id]: (prevCounts[id] || 0) + 1,
     }));
-    dispatch(cardActons.incrementCount(id))
+    dispatch(cardActons.incrementCount(id));
   };
 
   const handleDecrement = (id) => {
@@ -43,8 +44,7 @@ const FetchInfo = () => {
       }
       return { ...prevCounts, [id]: newCount };
     });
-    dispatch(cardActons.decrementCount(id))
-
+    dispatch(cardActons.decrementCount(id));
   };
 
   useEffect(() => {
@@ -52,31 +52,23 @@ const FetchInfo = () => {
     setSelectedIds(newSelectedIds);
   }, [counts]);
 
-  useEffect(() => {
-    selecteditems.forEach((item) => {
-      if (counts[item.id]) {
-        setmatchcountsanditem((prev) => [
-          ...prev,
-          { counts: counts[item.id], item },
-        ]);
+  const listHandler = useCallback(
+    (item) => {
+      const existingCount = counts[item.id] || 0;
+      setSelectedIds((prev) => [...prev, item.id]);
+      setCounts((prev) => ({
+        ...prev,
+        [item.id]: existingCount + 1,
+      }));
+
+      if (existingCount === 0) {
+        dispatch(cardActons.addItemToCard({ item, counts: 1 }));
+      } else {
+        dispatch(cardActons.addItemToCard({ item, counts: existingCount + 1 }));
       }
-    });
-  }, [counts, selecteditems]);
-  const listHandler = useCallback((item) => {
-    const existingCount = counts[item.id] || 0;
-    setSelectedIds((prev) => [...prev, item.id]);
-    setSelecteditems((prev) => [...prev, item]);
-    setCounts((prev) => ({
-      ...prev,
-      [item.id]: existingCount + 1,
-    }));
-  
-    if (existingCount === 0) {
-      dispatch(cardActons.addItemToCard({ item, counts: 1 }));
-    } else {
-      dispatch(cardActons.addItemToCard({ item, counts: existingCount + 1 }));
-    }
-  }, [dispatch, counts]);
+    },
+    [dispatch, counts]
+  );
 
   console.log(cardItems);
   if (error) return <div>Error in showing data</div>;
@@ -133,3 +125,10 @@ const FetchInfo = () => {
 };
 
 export default FetchInfo;
+
+export const useData = () => {
+  const [dataS, setDatas] = useState([]);
+  useEffect(() => {
+    setDatas(datato);
+  }, [datato]);
+};
