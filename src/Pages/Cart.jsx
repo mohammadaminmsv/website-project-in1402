@@ -58,7 +58,7 @@ const Cart = () => {
     (state) => state.logi.userInfoAgreeSeqment.userInfoAgreeSeqment
   );
   const user = useSelector((state) => state.user);
-  console.log(login.id);
+
   const clickHandler = () => {
     if (login === "") {
       dispatch(
@@ -84,11 +84,11 @@ const Cart = () => {
 
   return (
     <>
-      <div className="container text-right my-10 flex flex-col">
+      <div className="container text-right my-10 flex flex-col ">
         <div>
           <span className=" font-thin opacity-45 text-2xl mr-5">سبد خرید</span>
         </div>
-        <div className="flex flex-row-reverse my-5">
+        <div className="flex flex-row-reverse my-5 lg:flex-col lg:mr-12 lg:items-start lg:content-start lg:justify-start">
           <div className="w-4/5 border border-1 shadow-2xl  bg-slate-50 ml-28 h-full rounded-lg">
             اطلاعات خرید شما به صورت زیر است
             {cardItems.length > 0 ? (
@@ -129,9 +129,9 @@ const Cart = () => {
               <p>سبد خرید خالی است.</p>
             )}
           </div>
-          <div className="w-1/5 flex flex-col bg-slate-100 pr-5 space-y-4 items-end border border-1 shadow-2xl h-auto rounded-lg">
+          <div className="w-1/5 lg:items-start  lg:flex-wrap lg:w-[180px] lg:ml-20  lg:mt-5 flex flex-col bg-slate-100 pr-5 space-y-4 items-end border border-1 shadow-2xl h-auto rounded-lg">
             مبلغ فاکتور شده
-            <div className="mt-2 bg-red-300 w-3/5 flex flex-row justify-center">
+            <div className="mt-2 bg-red-300 w-3/5 lg:w-max lg:items-center flex flex-row justify-center">
               {cardItems.reduce(
                 (total, item) => total + item.item.price * item.counts,
                 0

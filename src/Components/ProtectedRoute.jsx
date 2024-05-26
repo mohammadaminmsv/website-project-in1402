@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children, userInfoData }) => {
   }else {
     return children
   }
-  return <></>;
+
 };
 
 export default ProtectedRoute;

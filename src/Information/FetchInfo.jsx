@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -21,7 +21,12 @@ const FetchInfo = () => {
       return response.data.Laptop;
     },
     staleTime: 4000,
+    
   });
+
+  // const {mutation} = useMutation({
+  //   mutationFn:()=>{axios.post(``)}
+  // })
   useEffect(() => {
     setDatato(data);
   }, [data]);
@@ -77,7 +82,7 @@ const FetchInfo = () => {
   return (
     <div className="container mt-7">
       {data.length > 0 ? (
-        <div className="flex flex-row space-x-5 space-y-5 justify-center flex-wrap items-start">
+        <div className="flex flex-row space-x-5 space-y-5 justify-start content-start flex-wrap items-center">
           {data.map((item) => (
             <div
               key={item.id}

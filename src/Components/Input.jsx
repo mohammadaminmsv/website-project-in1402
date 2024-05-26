@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ place, name, id, type, classn, children, changehandler,val ,active}) => {
+const Input = ({ place, name, id, type, classn, children, changehandler,val ,active,checked}) => {
   return (
     <>
       <input
@@ -12,6 +12,7 @@ const Input = ({ place, name, id, type, classn, children, changehandler,val ,act
         name={name}
         value={val}
         disabled={active}
+        checked={checked}
       >
         {children}
       </input>

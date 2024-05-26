@@ -15,7 +15,7 @@ const SpecialComponent = () => {
   return (
     <div className="container text-center border-dashed border-t-2 pt-3 border-cyan-300 space-x-10">
       <h3 className=" text-red-400 font-bold text-2xl">محصولات ویژه</h3>
-      <div className=" mt-7 grid grid-cols-5 space-x-5  md:grid-cols-3 md:space-y-5">
+      <div className=" mt-7 grid grid-cols-5 space-x-5  md:grid-cols-3 md:space-y-5 md:mr-[3px] lg:flex lg:flex-col">
         {specialProduct.map((item) => (
           <div
             key={item.id}
@@ -36,7 +36,7 @@ const SpecialComponent = () => {
               >
                 {(close) => (
                   <div className="modal">
-                    <div className="content">Welcome to GFG!!!</div>
+                    <div className="content">خب دو.ستان شما میتوانید اینجا اطلاعاتی از این محصوول بگیرید</div>
                     <div>
                       <button
                         className="border border-black"

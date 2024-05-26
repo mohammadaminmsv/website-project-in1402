@@ -33,7 +33,7 @@ const Home = () => {
           <strong className="md:whitespace-nowrap">ضمانت ارجاع و تعویض</strong>
         </div>
       </div>
-      <div className="grid grid-flow-col items-center  justify-center  space-x-12 md:grid-cols-2  md:gap-4 md:grid-rows-2 mt-10 lg:grid-cols-4 lg:grid-rows-4">
+      <div className="grid grid-cols-4 items-center  justify-center  space-x-12 md:grid-cols-2 container md:gap-4 md:grid-rows-2 mt-10 lg:flex-col lg:flex  ">
         <Link
           className="cursor-pointer flex md:items-center md:justify-center"
           to="/product/watch"
@@ -42,7 +42,7 @@ const Home = () => {
             logo={<TbDeviceWatch className="w-10 h-10" />}
             name={"ساعت هوشمند"}
             className={
-              "flex flex-row bg-yellow-600 justify-around w-52 py-2 border-2 border-black rounded-lg font-semibold text-xl"
+              "flex flex-row bg-yellow-600 justify-around w-52 py-2 border-2  border-black rounded-lg font-semibold text-xl ml-[48px]"
             }
           />
         </Link>
@@ -54,7 +54,7 @@ const Home = () => {
             logo={<TbDeviceMobileSearch className="w-10 h-10" />}
             name={"گوشی و تبلت"}
             className={
-              "flex flex-row bg-green-500  justify-around w-52 py-2 border-2 border-black rounded-lg font-semibold text-xl md:ml-0"
+              "flex flex-row bg-green-500  justify-around w-52  py-2 border-2 border-black rounded-lg font-semibold text-xl "
             }
           />
         </Link>
@@ -85,7 +85,7 @@ const Home = () => {
       </div>
       <Outlet />
       <SpecialComponent />
-      <div className="grid grid-flow-col items-center  justify-center space-x-12 md:grid-cols-2  md:gap-4 md:grid-rows-2 mt-10 ">
+      <div className="grid grid-flow-col items-center   justify-center space-x-12 md:grid-cols-2  md:gap-4 md:grid-rows-2 mt-10 lg:flex-col lg:flex container">
         <Link
           className="cursor-pointer flex md:items-center md:justify-center"
           to="/product/watch"
@@ -94,7 +94,7 @@ const Home = () => {
             logo={<TbDeviceWatch className="w-10 h-10" />}
             name={"ساعت هوشمند"}
             className={
-              "flex flex-row bg-yellow-600 justify-around w-52 py-2 border-2 border-black rounded-lg font-semibold text-xl"
+              "flex flex-row bg-yellow-600 justify-around w-52 py-2 border-2 border-black rounded-lg font-semibold text-xl ml-[48px]"
             }
           />
         </Link>

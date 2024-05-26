@@ -43,7 +43,7 @@ const Information = () => {
     dispatch(UserActions.changeInfoOfUser(formchange));
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const myitem = useSelector((state) => state.user.userInfo);
   const agreeHandler = (e) => {
     e.preventDefault();
@@ -55,11 +55,10 @@ const Information = () => {
         userInfoAgreeSeqment: formchange,
       })
     );
-    navigate("/profile")
-   
+    navigate("/profile");
   };
   return (
-    <div className="container text-right mb-5">
+    <div className="container  text-right mb-5">
       <div className="my-3  mx-20 ">
         <span className=" font-thin">اطلاعات کاربری شما</span>
       </div>

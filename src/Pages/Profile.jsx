@@ -13,7 +13,7 @@ const Profile = () => {
     information: false,
   });
   const userInfoData = useSelector((state) => state.logi);
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     setUser(userInfoData.userInfoAgreeSeqment.userInfoAgreeSeqment);
   });
@@ -34,11 +34,11 @@ const dispatch = useDispatch()
     }));
   };
 
-  const logouthandler =()=>{
-    dispatch(infoActions.deleteFromSaveUser())
-  }
+  const logouthandler = () => {
+    dispatch(infoActions.deleteFromSaveUser());
+  };
   return (
-    <div className="container text-right mt-8 h-screen">
+    <div className="container text-right mt-8 h-auto">
       <div>
         <span className=" font-thin">{user.name} سلام</span>{" "}
       </div>

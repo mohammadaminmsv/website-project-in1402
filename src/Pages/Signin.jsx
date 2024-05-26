@@ -89,7 +89,6 @@ const Signin = () => {
         return;
       }
     } else {
-
       dispatch(sendUserDataToDb(myItem));
       dispatch(
         NotiActions.showNotification({
@@ -106,16 +105,16 @@ const Signin = () => {
   };
 
   return (
-    <div className="container text-right">
+    <div className="container text-right lg:w-auto ">
       <div className="my-3 mx-20">
         <span className=" font-thin">ایجاد حساب جدید</span>
       </div>
       <form
         onSubmit={handleClick}
-        className="px-10  flex flex-col border-x-2 mx-20 shadow-md py-5"
+        className="px-10  flex flex-col border-x-2 mx-20 shadow-md py-5 lg:w-auto lg:px-1"
       >
-        <div className=" text-right flex flex-row-reverse justify-around my-3">
-          <div className="flex flex-col text-right w-1/2 mx-2">
+        <div className=" text-right flex flex-row-reverse justify-around my-3 lg:flex-col lg:items-center">
+          <div className="flex flex-col text-right w-1/2 mx-2 lg:w-max">
             <span>نام</span>
             <Input
               id={"name"}
@@ -126,7 +125,7 @@ const Signin = () => {
               classn={`w-full placeholder:px-3 mx-3 mr-3 py-[4px] border rounded-lg focus:ring-2 outline-none my-1 ring-green-200 text-right`}
             />
           </div>
-          <div className="flex flex-col text-right w-1/2 mx-2  ">
+          <div className="flex flex-col text-right w-1/2 mx-2 lg:w-max ">
             <span>نام خانوادگی</span>
             <Input
               id={"lastname"}
@@ -159,8 +158,8 @@ const Signin = () => {
             classn={` placeholder:px-3 placeholder:text-right  w-full mx-3 mr-3 py-[4px] border rounded-lg focus:ring-2 outline-none my-1 ring-green-200`}
           />
         </div>
-        <div className=" text-right flex flex-row-reverse justify-around mt-3">
-          <div className="flex flex-col text-right w-1/2 mx-2">
+        <div className=" text-right flex flex-row-reverse lg:flex-col lg:items-center  justify-around mt-3">
+          <div className="flex flex-col text-right w-1/2 mx-2 lg:w-max">
             <span>کلمه عبور</span>
             <Input
               id={"password"}
@@ -171,7 +170,7 @@ const Signin = () => {
               classn={`placeholder:px-3 placeholder:text-right w-full mx-3 mr-3 py-[4px] border rounded-lg focus:ring-2 outline-none my-1 ring-green-200`}
             />
           </div>
-          <div className="flex flex-col text-right w-1/2 mx-2  ">
+          <div className="flex flex-col text-right w-1/2 mx-2 lg:w-max ">
             <span>تایید کلمه عبور</span>
             <Input
               id={"repassword"}

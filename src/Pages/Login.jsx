@@ -70,7 +70,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container flex flex-col w-1/2 mt-10 text-right">
+    <div className="container flex flex-col w-1/2 mt-10 text-right  lg:w-max">
       <span>مشتریان عضو</span>
       <div className="p-2 h-[390pt] justify-center flex flex-col space-y-8 items-center shadow-2xl border-2 border-teal-400 mt-10">
         <span className=" font-bold">برای ورود فیلد های زیر را پر کنید</span>
